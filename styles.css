@@ -1,0 +1,127 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+h1 {
+    color: #00ffcc;
+    text-shadow: 0 0 10px #00ffcc;
+}
+
+/* Contenedor de productos */
+#productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.producto {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 250px;
+}
+
+.producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.8);
+}
+
+.producto img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+button {
+    background-color: #00ffcc;
+    color: #121212;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #008f7a;
+}
+
+/* Panel de administración */
+#admin-panel {
+    background: #1e1e1e;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(92, 10, 117, 0.5);
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #00ffcc;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+}
+
+.editar, .eliminar {
+    background: none;
+    color: white;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.editar:hover {
+    color: #ffcc00;
+}
+
+.eliminar:hover {
+    color: #39085a;
+}
+
+/* Estilo para la subida de imágenes */
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    margin-top: 10px;
+}
+
+.file-upload input[type="file"] {
+    display: none;
+}
+
+.file-upload label {
+    background-color: #00ffcc;
+    color: #121212;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.file-upload label:hover {
+    background-color: #008f7a;
+}
+
+.file-upload img {
+    max-width: 100px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
