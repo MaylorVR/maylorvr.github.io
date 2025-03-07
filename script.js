@@ -48,6 +48,6 @@ function agregarProducto(id, imagenSrc) {
 }
 
 function comprarProducto(id) {
-    const mensaje = encodeURIComponent(`Hola guapo 🥵, quiero comprar el Producto ${id}.`);
+    const mensaje = encodeURIComponent(`Hola guapo 🥵🥵🥵, quiero comprar el Producto ${id}.`);
     window.open(`https://wa.me/51904282196?text=${mensaje}`, "_blank");
 }
