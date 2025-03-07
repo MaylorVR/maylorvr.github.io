@@ -1,127 +1,168 @@
+/* Importar una fuente moderna y futurista */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Animación de fondo */
+@keyframes neonBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Animación para el texto (pulso neón) */
+@keyframes neonPulse {
+  0%, 100% {
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+  }
+  50% {
+    text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+  }
+}
+
 /* Estilos generales */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  /* Fondo degradado animado */
+  background: linear-gradient(135deg, #0f0f0f, #1e1e1e, #0f0f0f);
+  background-size: 400% 400%;
+  animation: neonBackground 15s ease infinite;
+  color: #ffffff;
 }
 
 h1 {
-    color: #00ffcc;
-    text-shadow: 0 0 10px #00ffcc;
+  font-size: 3rem;
+  margin: 20px 0;
+  color: #00ffcc;
+  animation: neonPulse 2s infinite;
 }
 
 /* Contenedor de productos */
 #productos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
 }
 
+/* Tarjeta de producto */
 .producto {
-    background: #1e1e1e;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 250px;
+  position: relative;
+  background: rgba(30, 30, 30, 0.8);
+  padding: 15px;
+  border-radius: 12px;
+  max-width: 250px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+  overflow: hidden;
 }
 
+/* Efecto hover en la tarjeta */
 .producto:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 255, 204, 0.8);
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.6), 0 0 40px rgba(0, 255, 204, 0.4);
 }
 
+/* Imagen de producto */
 .producto img {
-    width: 100%;
-    border-radius: 10px;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
+/* Título del producto */
+.producto h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  color: #00ffcc;
+  text-shadow: 0 0 5px #00ffcc;
+}
+
+/* Botón de comprar */
 button {
-    background-color: #00ffcc;
-    color: #121212;
-    border: none;
-    padding: 10px 15px;
-    margin: 10px 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
+  background: none;
+  color: #00ffcc;
+  font-weight: bold;
+  border: 2px solid #00ffcc;
+  padding: 10px 20px;
+  margin: 10px 5px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.4s;
+  font-size: 1rem;
 }
 
+/* Efecto hover en botón */
 button:hover {
-    background-color: #008f7a;
+  background: #00ffcc;
+  color: #0f0f0f;
+  box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+  transform: scale(1.1);
 }
 
 /* Panel de administración */
 #admin-panel {
-    background: #1e1e1e;
-    padding: 20px;
-    margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(92, 10, 117, 0.5);
+  background: rgba(30, 30, 30, 0.8);
+  padding: 20px;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(92, 10, 117, 0.5);
+  max-width: 90%;
 }
 
-input {
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #00ffcc;
-    border-radius: 5px;
-    background: #222;
-    color: #fff;
+/* Inputs y campos de formulario */
+input, textarea {
+  padding: 12px;
+  margin: 5px;
+  border: 2px solid #00ffcc;
+  border-radius: 6px;
+  background: #222;
+  color: #fff;
+  font-size: 1rem;
+  width: 90%;
+  outline: none;
 }
 
+/* Animación de focus */
+input:focus, textarea:focus {
+  box-shadow: 0 0 10px #00ffcc;
+}
+
+/* Botones de edición y eliminación */
 .editar, .eliminar {
-    background: none;
-    color: white;
-    font-size: 1.2em;
-    border: none;
-    cursor: pointer;
-    transition: color 0.3s;
+  background: none;
+  color: white;
+  font-size: 1.3em;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .editar:hover {
-    color: #ffcc00;
+  color: #ffcc00;
 }
 
 .eliminar:hover {
-    color: #39085a;
+  color: #e63946;
 }
 
-/* Estilo para la subida de imágenes */
-.file-upload {
-    display: flex;
+/* Responsividad */
+@media (max-width: 768px) {
+  #productos {
     flex-direction: column;
     align-items: center;
-    background: #1e1e1e;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
-    margin-top: 10px;
-}
+  }
 
-.file-upload input[type="file"] {
-    display: none;
-}
-
-.file-upload label {
-    background-color: #00ffcc;
-    color: #121212;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.file-upload label:hover {
-    background-color: #008f7a;
-}
-
-.file-upload img {
-    max-width: 100px;
-    margin-top: 10px;
-    border-radius: 5px;
+  .producto {
+    max-width: 80%;
+  }
 }
