@@ -3,56 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlueMarket - Tienda Virtual</title>
+    <title>Tienda</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>BlueMarket</h1>
-        <button id="admin-btn" onclick="iniciarSesionAdmin()">🔑 Admin</button>
-        <button id="cerrar-admin-btn" onclick="cerrarSesionAdmin()" style="display:none;">🚪 Cerrar Sesión</button>
-    </header>
+    <h1>Lista de Productos</h1>
+    <div id="productos"></div>
 
-    <!-- Panel de Administración (Solo para Admins) -->
-    <section id="admin-panel" style="display: none;">
-        <h2>Administrador</h2>
-        <form id="producto-form">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" required>
-
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" required></textarea>
-
-            <label for="precio">Precio:</label>
-            <input type="number" id="precio" required>
-
-            <label for="imagen-file">Imagen:</label>
-            <input type="file" id="imagen-file" accept="image/*">
-            <img id="preview" style="display:none; width: 100px; height: auto; margin-top: 10px;">
-
-            <button type="button" onclick="agregarProducto()">Guardar Producto</button>
-        </form>
-    </section>
-
-    <!-- Sección de Productos -->
-    <section id="productos-container">
-        <h2>Productos</h2>
-        <div id="productos"></div>
-    </section>
+    <!-- Formulario para agregar productos (solo visible para el dueño) -->
+    <div id="admin-panel">
+        <h2>Agregar Producto</h2>
+        <input type="text" id="nombre" placeholder="Nombre del producto">
+        <textarea id="descripcion" placeholder="Descripción"></textarea>
+        <input type="number" id="precio" placeholder="Precio">
+        <input type="file" id="imagen-file">
+        <button onclick="agregarProducto()">Guardar Producto</button>
+    </div>
 
     <script src="script.js"></script>
-    <script>
-        // Ocultar botón de admin si no es admin
-        document.addEventListener("DOMContentLoaded", () => {
-            if (localStorage.getItem("admin") === "true") {
-                document.getElementById("admin-panel").style.display = "block";
-                document.getElementById("cerrar-admin-btn").style.display = "inline-block";
-                document.getElementById("admin-btn").style.display = "none";
-            } else {
-                document.getElementById("admin-btn").style.display = "inline-block";
-                document.getElementById("cerrar-admin-btn").style.display = "none";
-            }
-        });
-    </script>
 </body>
 </html>
