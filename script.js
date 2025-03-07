@@ -3,52 +3,51 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function cargarProductos() {
-    fetch("productos.json")
-        .then(response => response.json())
-        .then(data => {
-            const contenedor = document.getElementById("productos");
-            contenedor.innerHTML = "";
+    const contenedor = document.getElementById("productos");
+    contenedor.innerHTML = "";
 
-            data.forEach(producto => {
-                const productoHTML = `
-                    <div class="producto">
-                        <img src="images/${producto.imagen}" alt="${producto.nombre}">
-                        <h3>${producto.nombre}</h3>
-                        <p>${producto.descripcion}</p>
-                        <p><strong>S/ ${producto.precio}</strong></p>
-                    </div>
-                `;
-                contenedor.innerHTML += productoHTML;
-            });
-        })
-        .catch(error => console.error("Error cargando productos:", error));
+    for (let i = 1; i <= 10; i++) {
+        const posiblesExtensiones = ["jpg", "jpeg", "png", "webp", "avif"];
+        let imagenEncontrada = false;
+
+        for (let ext of posiblesExtensiones) {
+            let img = new Image();
+            img.src = `producto ${i}.${ext}`;
+
+            img.onload = () => {
+                if (!imagenEncontrada) {
+                    imagenEncontrada = true;
+                    agregarProducto(i, img.src);
+                }
+            };
+        }
+
+        // Si después de un pequeño retraso no se encontró imagen, se usa una por defecto
+        setTimeout(() => {
+            if (!imagenEncontrada) {
+                agregarProducto(i, "default.jpg");
+            }
+        }, 300);
+    }
 }
 
-function agregarProducto() {
-    const nombre = document.getElementById("nombre").value.trim();
-    const descripcion = document.getElementById("descripcion").value.trim();
-    const precio = document.getElementById("precio").value.trim();
-    const imagenInput = document.getElementById("imagen-file").files[0];
+function agregarProducto(id, imagenSrc) {
+    const contenedor = document.getElementById("productos");
 
-    if (!nombre || !descripcion || !precio || !imagenInput) {
-        alert("Todos los campos son obligatorios.");
-        return;
-    }
+    const productoHTML = `
+        <div class="producto">
+            <img src="${imagenSrc}" alt="Producto ${id}">
+            <h3>Producto ${id}</h3>
+            <p>Descripción del producto ${id}</p>
+            <p><strong>S/ ${(id * 10).toFixed(2)}</strong></p>
+            <button onclick="comprarProducto(${id})">Comprar</button>
+        </div>
+    `;
 
-    const formData = new FormData();
-    formData.append("nombre", nombre);
-    formData.append("descripcion", descripcion);
-    formData.append("precio", precio);
-    formData.append("imagen", imagenInput);
+    contenedor.innerHTML += productoHTML;
+}
 
-    fetch("api.php", {
-        method: "POST",
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert(data.mensaje);
-        cargarProductos();
-    })
-    .catch(error => console.error("Error guardando producto:", error));
+function comprarProducto(id) {
+    const mensaje = encodeURIComponent(`Hola, quiero comprar el Producto ${id}.`);
+    window.open(`https://wa.me/51904282196?text=${mensaje}`, "_blank");
 }

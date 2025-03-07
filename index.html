@@ -3,22 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda</title>
+    <title>Tienda de Productos</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Lista de Productos</h1>
-    <div id="productos"></div>
+    <header>
+        <h1>Tienda de Productos</h1>
+    </header>
 
-    <!-- Formulario para agregar productos (solo visible para el dueño) -->
-    <div id="admin-panel">
-        <h2>Agregar Producto</h2>
-        <input type="text" id="nombre" placeholder="Nombre del producto">
-        <textarea id="descripcion" placeholder="Descripción"></textarea>
-        <input type="number" id="precio" placeholder="Precio">
-        <input type="file" id="imagen-file">
-        <button onclick="agregarProducto()">Guardar Producto</button>
-    </div>
+    <main>
+        <div id="productos"></div>
+    </main>
 
     <script src="script.js"></script>
 </body>
